@@ -33,6 +33,29 @@ let createBiases nn =
     let updatedNetwork = { nn with biases = newBiases }
     updatedNetwork
 
+let sigmoid (inpu: float) = 1.0 / (1.0 + 2.7 ** (-inpu))
+    
+let propagate_forward nn = 
+
+    let updateThese = nn.network
+
+    // todo: propagate_forward without mutable
+    for x in 0..(nn.weights.Length-1) do
+        for y in 0..(nn.weights.[x].Length-1) do
+            for z in 0..(nn.weights.[x].[y].Length-1) do
+                updateThese.[x+1].[z] <- nn.network.[x+1].[z] + (nn.weights.[x].[y].[z] * nn.network.[x].[y])
+
+    for x in 0..(nn.network.Length-2) do
+        for y in 0..(nn.network.[x+1].Length-1) do
+            updateThese.[x+1].[y] <- nn.network.[x+1].[y] * nn.biases.[x].[y]
+
+    for x in 0..(nn.network.Length-2) do
+        for y in 0..(nn.network.[x+1].Length-1) do
+            updateThese.[x+1].[y] <- sigmoid(nn.network .[x+1].[y])
+
+    let updatedNetwork = { nn with network = updateThese }
+    updatedNetwork
+
 [<EntryPoint>]
 let main argv = 
 
