@@ -14,13 +14,13 @@ type NeuralNetwork =
     }
 
 let createNN nn = 
-    let nodes = Array.init nn.top.Length (fun x -> Array.init nn.top.[x] (fun y -> 1.0))
+    let nodes = Array.init nn.top.Length (fun x -> Array.init nn.top.[x] (fun y -> if x = 0 then nn.input.[y] else 1.0))
     let updatedNetwork = { nn with network = nodes }
     updatedNetwork
    
 let normalizeInputs nn = 
     let normInputs = nn.input |> List.map (fun x -> ((x-0.0)/(30.0-0.0))*(1.0-0.0)+0.0)
-    let updatedNetwork = { nn with input = normInputs }
+    let updatedNetwork = { nn with input = normInputs; }
     updatedNetwork
 
 let createWeights nn = 
@@ -47,10 +47,11 @@ let main argv =
 
     let updated nn = 
         nn
-        |> createNN
         |> normalizeInputs
+        |> createNN
         |> createWeights
         |> createBiases
+        |> propagate_forward
         
 
     printfn "%A" (updated neuralnetwork)
