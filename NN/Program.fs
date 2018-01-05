@@ -2,6 +2,7 @@
 // See the 'F# Tutorial' project for more help.
 
 open System
+let ran = Random()
 
 type NeuralNetwork = 
     {
@@ -12,6 +13,25 @@ type NeuralNetwork =
         biases: float array array
     }
 
+let createNN nn = 
+    let nodes = Array.init nn.top.Length (fun x -> Array.init nn.top.[x] (fun y -> 1.0))
+    let updatedNetwork = { nn with network = nodes }
+    updatedNetwork
+   
+let normalizeInputs nn = 
+    let normInputs = nn.input |> List.map (fun x -> ((x-0.0)/(30.0-0.0))*(1.0-0.0)+0.0)
+    let updatedNetwork = { nn with input = normInputs }
+    updatedNetwork
+
+let createWeights nn = 
+    let newWeights = Array.init (nn.top.Length-1) (fun x -> Array.init nn.top.[x] (fun y -> Array.init nn.top.[x+1] (fun z -> ran.NextDouble())))
+    let updatedNetwork = { nn with weights = newWeights }
+    updatedNetwork
+
+let createBiases nn =
+    let newBiases = Array.init (nn.top.Length-1) (fun x -> Array.init nn.top.[x+1] (fun y -> ran.NextDouble()))
+    let updatedNetwork = { nn with biases = newBiases }
+    updatedNetwork
 
 [<EntryPoint>]
 let main argv = 
@@ -24,6 +44,16 @@ let main argv =
             weights = [||]
             biases  = [||]
         }
+
+    let updated nn = 
+        nn
+        |> createNN
+        |> normalizeInputs
+        |> createWeights
+        |> createBiases
+        
+
+    printfn "%A" (updated neuralnetwork)
 
     Console.ReadLine() |> ignore
 
