@@ -12,15 +12,15 @@ type NeuralNetwork =
         weights: float array array array
         biases: float array array
     }
-
-let createNN nn = 
-    let nodes = Array.init nn.top.Length (fun x -> Array.init nn.top.[x] (fun y -> if x = 0 then nn.input.[y] else 1.0))
-    let updatedNetwork = { nn with network = nodes }
-    updatedNetwork
    
 let normalizeInputs nn = 
     let normInputs = nn.input |> List.map (fun x -> ((x-0.0)/(30.0-0.0))*(1.0-0.0)+0.0)
     let updatedNetwork = { nn with input = normInputs; }
+    updatedNetwork
+
+let createNN nn = 
+    let nodes = Array.init nn.top.Length (fun x -> Array.init nn.top.[x] (fun y -> if x = 0 then nn.input.[y] else 1.0))
+    let updatedNetwork = { nn with network = nodes }
     updatedNetwork
 
 let createWeights nn = 
@@ -56,6 +56,9 @@ let propagate_forward nn =
     let updatedNetwork = { nn with network = updateThese }
     updatedNetwork
 
+//let errors nn = 
+    
+
 [<EntryPoint>]
 let main argv = 
 
@@ -63,7 +66,7 @@ let main argv =
         {
             top     = [2; 3; 1]
             network = [||]
-            input   = [7.0; 15.0]
+            input   = [1.0; 1.0]
             weights = [||]
             biases  = [||]
         }

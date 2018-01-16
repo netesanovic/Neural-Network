@@ -5,15 +5,15 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>cfa90d01-98ff-4790-8caa-ddffac857910</ProjectGuid>
+    <ProjectGuid>6cde5cb3-e2b4-4e9d-a33d-24ec5ab52d14</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>NN</RootNamespace>
-    <AssemblyName>NN</AssemblyName>
+    <RootNamespace>NeuralNetwork</RootNamespace>
+    <AssemblyName>NeuralNetwork</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <UseStandardResourceNames>true</UseStandardResourceNames>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
-    <Name>NN</Name>
+    <Name>NeuralNetwork</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

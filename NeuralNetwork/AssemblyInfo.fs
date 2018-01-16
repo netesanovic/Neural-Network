@@ -1,4 +1,4 @@
-﻿namespace NN.AssemblyInfo
+﻿namespace NeuralNetwork.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[<assembly: AssemblyTitle("NN")>]
+[<assembly: AssemblyTitle("NeuralNetwork")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
-[<assembly: AssemblyProduct("NN")>]
+[<assembly: AssemblyProduct("NeuralNetwork")>]
 [<assembly: AssemblyCopyright("Copyright ©  2018")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
@@ -22,7 +22,7 @@ open System.Runtime.InteropServices
 [<assembly: ComVisible(false)>]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[<assembly: Guid("cfa90d01-98ff-4790-8caa-ddffac857910")>]
+[<assembly: Guid("6cde5cb3-e2b4-4e9d-a33d-24ec5ab52d14")>]
 
 // Version information for an assembly consists of the following four values:
 // 
